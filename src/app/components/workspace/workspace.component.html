@@ -1,1 +1,28 @@
-<p>workspace works!</p>
+<div class="workspace-container">
+  <div class="controls">
+    <button (click)="togglePlayback()">
+      {{ isPlaying ? 'Pause' : 'Play' }}
+    </button>
+    <button (click)="clear()">Clear</button>
+  </div>
+
+  <div #workspace
+       class="workspace"
+       (click)="handleWorkspaceClick($event)"
+       [class.playing]="isPlaying">
+
+    <div class="playback-line"
+      [style.left.px]="playbackPosition">
+    </div>
+
+    <div class="grid-lines">
+      <div *ngFor="let line of gridLines"
+           class="grid-line"
+           [style.top.px]="line">
+      </div>
+    </div>
+
+    <div class="notes-container">
+    </div>
+  </div>
+</div>
